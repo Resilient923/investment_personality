@@ -106,6 +106,8 @@ const RESULT_MAP: Record<
 
 const VALID_CODES = Object.keys(RESULT_MAP);
 
+const SITE_URL = "https://investment-personality.vercel.app";
+
 export async function generateMetadata({
   params,
   searchParams
@@ -127,12 +129,7 @@ export async function generateMetadata({
       ? searchParamsValue.nickname
       : "맑은 눈의 광인";
 
-  const siteUrl =
-    process.env.NEXT_PUBLIC_SITE_URL ||
-    (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : null) ||
-    "http://localhost:3000";
-
-  const imageUrl = `${siteUrl}/results/${result.imageFile}`;
+  const imageUrl = `${SITE_URL}/results/${result.imageFile}`;
 
   return {
     title: `${nickname}님은 ${result.title} | 호구냐 씹고수냐 테스트`,
