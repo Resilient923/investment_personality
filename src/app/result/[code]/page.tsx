@@ -127,6 +127,13 @@ export async function generateMetadata({
       ? searchParamsValue.nickname
       : "맑은 눈의 광인";
 
+  const siteUrl =
+    process.env.NEXT_PUBLIC_SITE_URL ||
+    (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : null) ||
+    "http://localhost:3000";
+
+  const imageUrl = `${siteUrl}/results/${result.imageFile}`;
+
   return {
     title: `${nickname}님은 ${result.title} | 호구냐 씹고수냐 테스트`,
     description: result.description,
@@ -135,7 +142,7 @@ export async function generateMetadata({
       description: result.description,
       images: [
         {
-          url: `/results/${result.imageFile}`,
+          url: imageUrl,
           width: 1200,
           height: 630,
           alt: result.title
@@ -147,7 +154,7 @@ export async function generateMetadata({
       card: "summary_large_image",
       title: `${nickname}님은 ${result.title}`,
       description: result.description,
-      images: [`/results/${result.imageFile}`]
+      images: [imageUrl]
     }
   };
 }
