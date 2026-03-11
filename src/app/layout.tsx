@@ -45,14 +45,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ko">
-      <body>
-        {children}
+      <head>
         <Script
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3289869145816531"
           crossOrigin="anonymous"
-          strategy="afterInteractive"
+          strategy="beforeInteractive"
         />
-      </body>
+      </head>
+      <body>{children}</body>
     </html>
   );
 }
