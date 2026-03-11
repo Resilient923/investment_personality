@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Script from "next/script";
 import "./globals.css";
 
 const SITE_URL = "https://investment-personality.vercel.app";
@@ -46,10 +45,11 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <head>
-        <Script
+        {/* Google AdSense */}
+        <script
+          async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3289869145816531"
           crossOrigin="anonymous"
-          strategy="beforeInteractive"
         />
       </head>
       <body>{children}</body>
