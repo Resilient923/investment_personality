@@ -22,6 +22,7 @@ type ResultType = {
   title: string;
   description: string;
   accent: "red" | "blue" | "neon";
+  imageFile: string;
 };
 
 const QUESTIONS: Question[] = [
@@ -194,97 +195,113 @@ const RESULT_TYPES: ResultType[] = [
     code: "DGRN",
     title: "상장폐지 수집가",
     description: "휴지조각 수집이 취미인 마이너스의 손.",
-    accent: "blue"
+    accent: "blue",
+    imageFile: "DGRN 상장폐지 컬렉터.jpg"
   },
   {
     code: "FMOD",
     title: "상따 중독 포모충",
     description: "남 벌 때 못 벌면 혈압 올라서 고점 매수하는 뇌.",
-    accent: "red"
+    accent: "red",
+    imageFile: "FMOD FOMO에 절여진 뇌.jpg"
   },
   {
     code: "YOLO",
     title: "한강뷰 아니면 입수",
     description: "인생 한 방에 건 노빠꾸 야수의 심장.",
-    accent: "red"
+    accent: "red",
+    imageFile: "YOLO 인생 한 방 노빠꾸.png"
   },
   {
     code: "HODL",
     title: "망부석 좀비",
     description: "수익률 -95%에도 아직 안 팔았으니 손해 아니라는 분.",
-    accent: "blue"
+    accent: "blue",
+    imageFile: "HODL 지구끝까지 존버단.jpg"
   },
   {
     code: "ALGO",
     title: "방구석 워런 버핏",
     description: "차트 선 긋다 밤새고 세력 탓만 하는 선무당.",
-    accent: "neon"
+    accent: "neon",
+    imageFile: "ALGO 차트빌런(선무당).png"
   },
   {
     code: "STRE",
     title: "1분봉 노예",
     description: "주가 10원 하락에 수명 1시간씩 단축되는 유리 멘탈.",
-    accent: "blue"
+    accent: "blue",
+    imageFile: "STRE 스트레스 맛집.jpg"
   },
   {
     code: "CHIK",
     title: "익절병 환자",
     description: "0.5%만 빨간불 들어와도 치킨 사 먹는 쫄보.",
-    accent: "neon"
+    accent: "neon",
+    imageFile: "CHIK 치킨 한 마리 익절러.jpg"
   },
   {
     code: "GHOST",
     title: "비번 까먹은 시체",
     description: "강제 장기투자 중인 계좌 주인 (생사불명).",
-    accent: "blue"
+    accent: "blue",
+    imageFile: "GHOST 계좌비번 까먹음.jpg"
   },
   {
     code: "NEWS",
     title: "찌라시 하이에나",
     description: "카톡방 '카더라'에 전 재산 태우는 정보 호구.",
-    accent: "red"
+    accent: "red",
+    imageFile: "NEWS 찌라시 맹신론자.jpg"
   },
   {
     code: "MATH",
     title: "계산기 중독자",
     description: "수익은 마이너스인데 엑셀로 복리 망상 중.",
-    accent: "neon"
+    accent: "neon",
+    imageFile: "MATH 액셀 집착 광기.jpg"
   },
   {
     code: "PRAY",
     title: "정한수 메타",
     description: "분석은 사치, 매수 후 조상님께 비는 무속인.",
-    accent: "blue"
+    accent: "blue",
+    imageFile: "PRAY 기도 매매법 창시자.jpg"
   },
   {
     code: "FIRE",
     title: "망상형 파이어족",
     description: "50만 원 투자하고 내년 강남 입주 꿈꾸는 자.",
-    accent: "red"
+    accent: "red",
+    imageFile: "FIRE 망상형 파이어족.jpg"
   },
   {
     code: "BLUE",
     title: "우량주 가스라이팅",
     description: '"삼전은 안 망해"라며 5년째 인질 잡힌 분.',
-    accent: "blue"
+    accent: "blue",
+    imageFile: "BLUE 우량주 성애자.jpg"
   },
   {
     code: "SHOR",
     title: "인간 인버스",
     description: "내가 사면 고점, 팔면 저점인 기적의 지표.",
-    accent: "red"
+    accent: "red",
+    imageFile: "SHOR 인간 인버스.jpg"
   },
   {
     code: "GOLD",
     title: "예적금 광신도",
     description: "인플레이션한테 뺨 맞으면서 현금만 쥐고 있는 자.",
-    accent: "neon"
+    accent: "neon",
+    imageFile: "GOLD 안전자산 집착광.jpg"
   },
   {
     code: "FLEX",
     title: "계좌 녹이는 셀럽",
     description: "수익 나면 오마카세로 원금까지 탕진하는 자.",
-    accent: "red"
+    accent: "red",
+    imageFile: "FLEX 수익금 전액 탕진러.jpg"
   }
 ];
 
@@ -681,10 +698,10 @@ function ResultView({
     <div className="relative w-full max-w-sm flex flex-col items-center">
       <div className="relative w-full aspect-[1200/630] rounded-2xl overflow-hidden mb-4 shadow-xl bg-white">
         <Image
-          src={`/results/${result.code}.png`}
+          src={`/results/${encodeURIComponent(result.imageFile)}`}
           alt={result.title}
           fill
-          className="object-cover"
+          className="object-contain"
           unoptimized
           sizes="(max-width: 400px) 100vw, 400px"
         />
