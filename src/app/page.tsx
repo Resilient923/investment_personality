@@ -780,15 +780,15 @@ function ResultView({
         </div>
 
         {/* 커피 한잔 후원 섹션 */}
-        <div className="mt-6 w-full rounded-2xl bg-orange-50 border border-orange-100 p-4 flex flex-col items-center gap-3 shadow-sm">
-          <p className="text-xs text-orange-800 font-medium">테스트가 재밌으셨나요? ☕</p>
+        <div className="mt-6 w-full rounded-2xl bg-blue-50 border border-blue-100 p-4 flex flex-col items-center gap-3 shadow-sm">
+          <p className="text-xs text-blue-800 font-medium">테스트가 재밌으셨나요? ☕</p>
           <a 
-            href="https://www.buymeacoffee.com" 
+            href="https://toss.me/stockmind" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="flex items-center gap-2 bg-[#FFDD00] text-black px-4 py-2 rounded-xl text-sm font-bold shadow-md hover:scale-105 transition-transform"
+            className="flex items-center gap-2 bg-[#0064ff] text-white px-4 py-2.5 rounded-xl text-sm font-bold shadow-md hover:scale-105 transition-transform"
           >
-            <span className="text-base">☕</span> 개발자에게 커피 한잔 주기
+            <span className="text-base">💙</span> 개발자에게 커피 후원하기 (토스)
           </a>
         </div>
 
