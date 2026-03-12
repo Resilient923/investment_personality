@@ -652,11 +652,11 @@ export default function Page() {
                 className="flex flex-col flex-1 justify-center items-center w-full"
               >
                 <ResultView
-                result={result}
-                score={score ?? 0}
-                onRetry={reset}
-                nickname={displayName}
-              />
+                  result={result}
+                  score={score ?? 0}
+                  onRetry={reset}
+                  nickname={displayName}
+                />
               </motion.div>
             )}
           </AnimatePresence>
@@ -678,7 +678,7 @@ export default function Page() {
               </span>
             )}
           </div>
-          
+
           <div className="flex gap-4 text-[10px] text-zinc-400 pb-4">
             <Link href="/privacy" className="hover:underline">개인정보처리방침</Link>
             <span>|</span>
@@ -777,19 +777,6 @@ function ResultView({
             <span className="text-2xl">🔄</span>
             다시 태어나서 처음부터 테스트하기
           </button>
-        </div>
-
-        {/* 커피 한잔 후원 섹션 */}
-        <div className="mt-6 w-full rounded-2xl bg-blue-50 border border-blue-100 p-4 flex flex-col items-center gap-3 shadow-sm">
-          <p className="text-xs text-blue-800 font-medium">테스트가 재밌으셨나요? ☕</p>
-          <a 
-            href="https://toss.me/stockmind" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 bg-[#0064ff] text-white px-4 py-2.5 rounded-xl text-sm font-bold shadow-md hover:scale-105 transition-transform"
-          >
-            <span className="text-base">💙</span> 개발자에게 커피 후원하기 (토스)
-          </a>
         </div>
 
         <p className="mt-4 text-xs text-zinc-500 leading-relaxed border-t border-zinc-200 pt-3 text-center">

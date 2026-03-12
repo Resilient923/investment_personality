@@ -238,23 +238,11 @@ export default async function ResultPage({
           </Link>
         </div>
 
-        {/* 커피 한잔 후원 섹션 */}
-        <div className="mt-6 w-full rounded-2xl bg-blue-50 border border-blue-100 p-4 flex flex-col items-center gap-3 shadow-sm">
-          <p className="text-xs text-blue-800 font-medium">서비스가 마음에 드셨나요? ☕</p>
-          <a 
-            href="https://toss.me/stockmind" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 bg-[#0064ff] text-white px-4 py-2.5 rounded-xl text-sm font-bold shadow-md hover:scale-105 transition-transform"
-          >
-            <span className="text-base">💙</span> 개발자에게 커피 후원하기 (토스)
-          </a>
-        </div>
 
         <p className="mt-4 text-xs text-zinc-500 text-center">
           경고: 본 테스트는 과학적 근거가 1도 없습니다.
         </p>
-        
+
         <footer className="mt-8 flex gap-4 text-[10px] text-zinc-400 justify-center pb-8 border-t border-zinc-200 pt-4">
           <Link href="/privacy" className="hover:underline">개인정보처리방침</Link>
           <span>|</span>
