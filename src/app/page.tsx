@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 
 type AnswerType = "A" | "B";
 
@@ -661,20 +662,28 @@ export default function Page() {
           </AnimatePresence>
         </main>
 
-        <footer className="relative z-10 mt-auto pt-4 flex items-center justify-between text-sm text-zinc-500">
-          <button
-            onClick={goPrev}
-            disabled={isFirst || state.isFinished}
-            className="flex items-center gap-2 disabled:opacity-30 disabled:cursor-default py-2"
-          >
-            <span className="text-lg">←</span>
-            <span>이전</span>
-          </button>
-          {!state.isFinished && (
-            <span className="text-zinc-500">
-              {isLastQuestion ? "이제 결과 확인만 남았다..." : "고통 속에서 솔직하게 클릭하세요."}
-            </span>
-          )}
+        <footer className="relative z-10 mt-auto pt-8 flex flex-col items-center gap-4">
+          <div className="flex items-center justify-between w-full text-sm text-zinc-500">
+            <button
+              onClick={goPrev}
+              disabled={isFirst || state.isFinished}
+              className="flex items-center gap-2 disabled:opacity-30 disabled:cursor-default py-2"
+            >
+              <span className="text-lg">←</span>
+              <span>이전</span>
+            </button>
+            {!state.isFinished && (
+              <span className="text-zinc-500">
+                {isLastQuestion ? "이제 결과 확인만 남았다..." : "고통 속에서 솔직하게 클릭하세요."}
+              </span>
+            )}
+          </div>
+          
+          <div className="flex gap-4 text-[10px] text-zinc-400 pb-4">
+            <Link href="/privacy" className="hover:underline">개인정보처리방침</Link>
+            <span>|</span>
+            <Link href="/terms" className="hover:underline">이용약관</Link>
+          </div>
         </footer>
       </div>
     </div>
@@ -770,7 +779,20 @@ function ResultView({
           </button>
         </div>
 
-        <p className="mt-4 text-xs text-zinc-500 leading-relaxed border-t border-zinc-200 pt-3">
+        {/* 커피 한잔 후원 섹션 */}
+        <div className="mt-6 w-full rounded-2xl bg-orange-50 border border-orange-100 p-4 flex flex-col items-center gap-3 shadow-sm">
+          <p className="text-xs text-orange-800 font-medium">테스트가 재밌으셨나요? ☕</p>
+          <a 
+            href="https://www.buymeacoffee.com" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 bg-[#FFDD00] text-black px-4 py-2 rounded-xl text-sm font-bold shadow-md hover:scale-105 transition-transform"
+          >
+            <span className="text-base">☕</span> 개발자에게 커피 한잔 주기
+          </a>
+        </div>
+
+        <p className="mt-4 text-xs text-zinc-500 leading-relaxed border-t border-zinc-200 pt-3 text-center">
           경고: 본 테스트는 과학적 근거가 1도 없습니다.{" "}
           투자 판단의 책임은 언제나{" "}
           <span className="text-accentRed font-medium">당신의 계좌</span>에
