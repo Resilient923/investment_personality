@@ -662,7 +662,7 @@ export default function Page() {
           </AnimatePresence>
         </main>
 
-        <footer className="relative z-10 mt-auto pt-8 flex flex-col items-center gap-4">
+        <footer className="relative z-10 mt-auto pt-16 flex flex-col items-center gap-6">
           <div className="flex items-center justify-between w-full text-sm text-zinc-500">
             <button
               onClick={goPrev}
@@ -673,16 +673,33 @@ export default function Page() {
               <span>이전</span>
             </button>
             {!state.isFinished && (
-              <span className="text-zinc-500">
-                {isLastQuestion ? "이제 결과 확인만 남았다..." : "고통 속에서 솔직하게 클릭하세요."}
+              <span className="text-zinc-500 font-medium">
+                {isLastQuestion ? "마지막 결정의 순간..." : "솔직한 선택이 정확한 결과를 만듭니다."}
               </span>
             )}
           </div>
+          
+          {/* SEO용 테스트 원리 설명 섹션 */}
+          <section className="w-full border-t border-zinc-200 pt-12 mt-4 text-center">
+            <h2 className="text-xs font-black text-zinc-400 uppercase tracking-widest mb-4">How it works</h2>
+            <div className="space-y-4 text-[11px] text-zinc-500 leading-relaxed max-w-[320px] mx-auto">
+              <p>
+                본 <strong>STOCK MIND 투자 성향 테스트</strong>는 행동경제학(Behavioral Economics)의 주요 이론인 전망 이론(Prospect Theory)과 손실 회피 편향(Loss Aversion) 데이터에 기반하여 설계되었습니다. 
+                사용자의 선택 패턴을 분석하여 16가지의 독특한 투자 페르소나를 매칭합니다.
+              </p>
+              <p>
+                단순한 재미를 넘어, 자신의 무의식적인 매매 습관과 심리적 취약점을 파악함으로써 보다 객관적인 투자 의사결정을 내릴 수 있도록 돕는 것이 본 서비스의 핵심 목적입니다. 
+                차트 뒤에 숨겨진 인간의 본성을 탐구하는 여정에 참여해 보세요.
+              </p>
+            </div>
+          </section>
 
-          <div className="flex gap-4 text-[10px] text-zinc-400 pb-4">
-            <Link href="/privacy" className="hover:underline">개인정보처리방침</Link>
-            <span>|</span>
-            <Link href="/terms" className="hover:underline">이용약관</Link>
+          <div className="flex flex-col items-center gap-4 pb-12">
+            <div className="flex gap-6">
+              <Link href="/privacy" className="text-[10px] font-bold text-zinc-400 hover:text-zinc-600 uppercase tracking-widest">Privacy Policy</Link>
+              <Link href="/terms" className="text-[10px] font-bold text-zinc-400 hover:text-zinc-600 uppercase tracking-widest">Terms of Service</Link>
+            </div>
+            <p className="text-[9px] text-zinc-300">© 2024 STOCK MIND | Contact: resilient923@gmail.com</p>
           </div>
         </footer>
       </div>
@@ -705,7 +722,7 @@ function ResultView({
 
   return (
     <div className="relative w-full max-w-sm flex flex-col items-center">
-      <div className="relative w-full aspect-[1200/630] rounded-2xl overflow-hidden mb-4 shadow-xl bg-white">
+      <div className="relative w-full aspect-[1200/630] rounded-2xl overflow-hidden mb-6 shadow-xl bg-white">
         <Image
           src={`/results/${result.imageFile}`}
           alt={result.title}
@@ -717,73 +734,62 @@ function ResultView({
       </div>
 
       <div
-        className={`relative w-full rounded-3xl border-2 ${accent.border} bg-surface shadow-xl px-5 py-5 ${accent.shadow} animate-pop`}
+        className={`relative w-full rounded-2xl border-2 ${accent.border} bg-surface shadow-xl px-5 py-6 ${accent.shadow} animate-pop`}
       >
-        <div className="flex items-center justify-between gap-2 mb-3">
+        <div className="flex items-center justify-between gap-2 mb-4">
           <div className="flex flex-col gap-1">
-            <span className="text-[11px] uppercase tracking-[0.24em] text-zinc-500">
-              당신의 투자 성향
+            <span className="text-[11px] uppercase tracking-[0.24em] text-zinc-400 font-bold">
+              ANALYSIS REPORT
             </span>
             <div className="flex items-baseline gap-2">
-              <span className="text-sm text-zinc-500">{result.code}</span>
-              <h2 className="text-lg font-semibold text-zinc-800">{result.title}</h2>
+              <h2 className="text-xl font-black text-zinc-900">{result.title}</h2>
+              <span className="text-xs text-zinc-400 font-bold">#{result.code}</span>
             </div>
           </div>
           <span
-            className={`inline-flex items-center gap-1 rounded-full border px-2 py-1 text-[10px] font-medium ${accent.badge}`}
+            className={`inline-flex items-center gap-1 rounded-full border px-2 py-1 text-[10px] font-bold ${accent.badge}`}
           >
-            <span className="h-1.5 w-1.5 rounded-full bg-current animate-pulse" />
             {nickname} 인증
           </span>
         </div>
 
-        <p className="text-sm text-zinc-600 leading-relaxed mb-4">
+        <p className="text-sm text-zinc-600 leading-relaxed mb-6 font-medium">
           {result.description}
         </p>
 
-        <div className="mt-3 rounded-2xl border border-zinc-200 bg-background px-4 py-3 mb-5">
+        <div className="mt-3 rounded-xl border border-zinc-100 bg-[#f9f9fb] px-4 py-4 mb-8">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-xs text-zinc-500">내 투자 지능 점수</span>
-            <span className="text-xs text-zinc-400">0 ~ 100점 (비공식)</span>
+            <span className="text-[10px] font-bold text-zinc-400 uppercase tracking-tight">Investment Intelligence IQ</span>
+            <span className="text-2xl font-black text-accentNeon">{score}</span>
           </div>
-          <div className="flex items-end gap-3">
-            <div className="flex items-baseline gap-1">
-              <span className="text-3xl font-semibold text-accentNeon">
-                {score}
-              </span>
-              <span className="text-xs text-zinc-500 mb-1">/ 100</span>
-            </div>
-            <div className="flex-1 h-2 rounded-full bg-zinc-200 overflow-hidden">
-              <div
-                className="h-full bg-gradient-to-r from-accentBlue via-accentNeon to-accentRed"
-                style={{ width: `${Math.max(4, score)}%` }}
-              />
-            </div>
+          <div className="w-full h-1.5 bg-zinc-200 rounded-full overflow-hidden">
+            <div
+              className="h-full bg-accentNeon"
+              style={{ width: `${Math.max(5, score)}%` }}
+            />
           </div>
         </div>
 
         <div className="flex flex-col gap-3">
           <button
             onClick={() => handleShare(result.code, score, nickname)}
-            className="w-full rounded-2xl bg-[#FEE500] text-base font-semibold text-black py-4 flex items-center justify-center gap-3 shadow-lg active:scale-[0.98] transition-transform"
+            className="w-full rounded-2xl bg-[#FEE500] text-base font-bold text-black py-4 flex items-center justify-center gap-3 shadow-md hover:scale-[1.02] transition-transform active:scale-95"
           >
-            <span className="text-2xl">💬</span>
-            카카오톡으로 친구 참교육하기
+            <span className="text-xl">💬</span>
+            카카오톡으로 공유하기
           </button>
           <button
             onClick={onRetry}
-            className="w-full rounded-2xl border-2 border-zinc-300 bg-surface text-base font-medium text-zinc-700 py-4 flex items-center justify-center gap-3 active:scale-[0.98] transition-transform hover:bg-zinc-50"
+            className="w-full rounded-2xl border-2 border-zinc-200 bg-white text-base font-bold text-zinc-700 py-4 flex items-center justify-center gap-3 hover:bg-zinc-50 transition-colors active:scale-95"
           >
-            <span className="text-2xl">🔄</span>
-            다시 태어나서 처음부터 테스트하기
+            <span className="text-xl">🔄</span>
+            처음부터 다시하기
           </button>
         </div>
 
-        <p className="mt-4 text-xs text-zinc-500 leading-relaxed border-t border-zinc-200 pt-3 text-center">
-          경고: 본 테스트는 과학적 근거가 1도 없습니다.{" "}
-          투자 판단의 책임은 언제나{" "}
-          <span className="text-accentRed font-medium">당신의 계좌</span>에
-          있습니다.
+        <p className="mt-8 text-[10px] text-zinc-400 leading-relaxed border-t border-zinc-100 pt-4 text-center">
+          본 분석 결과는 심리 통계 모델에 기반한 추정치이며,<br />
+          실제 투자 손익에 대한 법적 책임은 사용자에게 있습니다.
         </p>
       </div>
     </div>
